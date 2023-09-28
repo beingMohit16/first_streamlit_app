@@ -42,7 +42,6 @@ my_cur.execute("select * from PC_RIVERY_DB.PUBLIC.FRUIT_LOAD_LIST")
 my_data_row = my_cur.fetchall()
 streamlit.text("The Fruit List Contains: ")
 streamlit.dataframe(my_data_row)
-stramlit.write('Thanks for adding ')
 
 #This will not work correctly, but just go with it now
 my_cur.execute("insert into PC_RIVERY_DB.PUBLIC.FRUIT_LOAD_LIST values ('from streamlit')")
