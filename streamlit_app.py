@@ -43,7 +43,7 @@ my_data_row = my_cur.fetchall()
 streamlit.text("The Fruit List Contains: ")
 streamlit.dataframe(my_data_row)
 
-streamlit.write("Thanks for inserting into: " + PC_RIVERY_DB.PUBLIC.FRUIT_LOAD_LIST)
+streamlit.write("Thanks for inserting into: ")
 
 #This will not work correctly, but just go with it now
 my_cur.execute("insert into PC_RIVERY_DB.PUBLIC.FRUIT_LOAD_LIST values ('from streamlit')")
