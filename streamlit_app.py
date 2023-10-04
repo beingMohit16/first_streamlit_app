@@ -50,9 +50,9 @@ except URLError as e:
 
 
 def get_fruit_load_list():
-   with my_cnx.cursor() as my_cur
-   my_cur.execute("select * from PC_RIVERY_DB.PUBLIC.FRUIT_LOAD_LIST")
-   return my_cur.fetchall()
+   with my_cnx.cursor() as my_cur:
+      my_cur.execute("select * from PC_RIVERY_DB.PUBLIC.FRUIT_LOAD_LIST")
+      return my_cur.fetchall()
 
 #Add Button to load fruit name
 if streamlit.button('GEt Fruit Load List '):
