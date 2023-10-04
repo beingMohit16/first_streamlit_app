@@ -1,3 +1,4 @@
+#import Libraries
 import streamlit
 import pandas
 import requests
@@ -23,7 +24,8 @@ selected_fruits = streamlit.multiselect("Pick Some Fruits: ", list(fruit_list.in
 fruits_to_show = fruit_list.loc[selected_fruits]
 streamlit.dataframe(fruits_to_show)
 
-#for display fruitsvice api response
+# For repetitive Api call 
+
 def get_fruityvice_data (this_fruit_choice):
    fruityvice_response = requests.get("https://fruityvice.com/api/fruit/"+this_fruit_choice)
    fruityvice_normalized = pandas.json_normalize(fruityvice_response.json())
@@ -42,17 +44,23 @@ try:
 except URLError as e:
   streamlit.error()
 
-# don't run anything past here while we troubleshoot
+# Stoping below function to run anything past here while we troubleshoot
+#Snowflake related functions
+
+
+
+def get_fruit_load_list():
+   with my_cnx.cursor() as my_cur
+   my_cur.execute("select * from PC_RIVERY_DB.PUBLIC.FRUIT_LOAD_LIST")
+   return my_cur.fetchall()
+
+#Add Button to load fruit name
+if streamlit.button('GEt Fruit Load List '):
+   my_cnx = snowflake.connector.connect(**streamlit.secrets["snowflake"])
+   my_data_row = get_fruit_load_list()
+   streamlit.dataframe(my_data_row)
+
 streamlit.stop()
-
-
-my_cnx = snowflake.connector.connect(**streamlit.secrets["snowflake"])
-my_cur = my_cnx.cursor()
-my_cur.execute("select * from PC_RIVERY_DB.PUBLIC.FRUIT_LOAD_LIST")
-my_data_row = my_cur.fetchall()
-streamlit.text("The Fruit List Contains: ")
-streamlit.dataframe(my_data_row)
-
 streamlit.write("Thanks for inserting into: ")
 
 #This will not work correctly, but just go with it now
